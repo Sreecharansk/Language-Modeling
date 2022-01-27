@@ -27,7 +27,6 @@ def loadBook(filename):
             text.append(Line1)   
     return text
 
-
 '''
 getCorpusLength(corpus)
 #2 [Check6-1]
@@ -35,7 +34,10 @@ Parameters: 2D list of strs
 Returns: int
 '''
 def getCorpusLength(corpus):
-    return
+    count=0
+    for statement in corpus:
+        count=count+len(statement)
+    return count
 
 
 '''
