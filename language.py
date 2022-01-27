@@ -4,6 +4,7 @@ Name:
 Roll No:
 """
 
+from tracemalloc import start
 import language_tests as test
 
 project = "Language" # don't edit this
@@ -84,7 +85,11 @@ Parameters: 2D list of strs
 Returns: list of strs
 '''
 def getStartWords(corpus):
-    return
+    start=[]
+    for statement in corpus:
+        if statement[0] not in start:
+            start.append(statement[0])
+    return start
 
 
 '''
@@ -94,7 +99,20 @@ Parameters: 2D list of strs
 Returns: dict mapping strs to ints
 '''
 def countStartWords(corpus):
-    return
+    allstart=[]
+    start=[]
+    dict={}
+    for statement in corpus:
+        allstart.append(statement[0])
+        if statement[0] not in start:
+            start.append(statement[0])
+    for i in range(0,len(start)):
+                    dict[start[i]] = 0
+    for word in start:
+        for word1 in allstart:
+            if word == word1:
+                dict[word]=dict[word]+1
+    return dict
 
 
 '''
