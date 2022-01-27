@@ -62,8 +62,20 @@ Parameters: 2D list of strs
 Returns: dict mapping strs to ints
 '''
 def countUnigrams(corpus):
-    return
-
+    dict={}
+    vocab=[]
+    for statement in corpus:
+        for word in statement:
+            if word not in vocab:
+                vocab.append(word) # unique words
+    for i in range(0,len(vocab)):
+                dict[vocab[i]] = 0
+    for word in vocab:
+        for statement in corpus:
+            for word1 in statement:
+                if word == word1:
+                    dict[word]=dict[word]+1
+    return dict
 
 '''
 getStartWords(corpus)
