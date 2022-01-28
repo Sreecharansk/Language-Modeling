@@ -6,6 +6,7 @@ Roll No:
 
 from re import L
 from tracemalloc import start
+from turtle import st
 import language_tests as test
 
 project = "Language" # don't edit this
@@ -253,7 +254,14 @@ Returns: str
 '''
 from random import choices
 def generateTextFromUnigrams(count, words, probs):
-    return
+    lst=[]
+    sentence=''
+    for i in range(count):
+        lst.append(choices(words, weights=probs)[0])
+    for j in range(len(lst)):
+        sentence=sentence+ ' '+lst[j]
+    
+    return sentence
 
 
 '''
