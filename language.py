@@ -229,7 +229,20 @@ Parameters: int ; list of strs ; list of floats ; list of strs
 Returns: dict mapping strs to floats
 '''
 def getTopWords(count, words, probs, ignoreList):
-    return
+    sortedwords=[]
+    sortedprobs=[]
+    for i in range(len(probs)):
+        A=max(probs)
+        B=probs.index(A)
+        if words[B] not in ignoreList:
+            sortedprobs.append(probs[B])
+            sortedwords.append(words[B])
+        probs[B]=0
+    dict={}
+    for i in range(count):
+        dict[sortedwords[i]]=sortedprobs[i]
+
+    return dict
 
 
 '''
