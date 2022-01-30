@@ -304,7 +304,9 @@ Returns: None
 '''
 def graphTop50Words(corpus):
     unigrams=buildVocabulary(corpus)
-    unigramprobs= buildUnigramProbs(unigrams,countUnigrams(corpus),50)   
+    unicount=countUnigrams(corpus)
+    count=len(unigrams)
+    unigramprobs= buildUnigramProbs(unigrams,unicount,count)
     dict=getTopWords(50,unigrams,unigramprobs,ignore)
     barPlot(dict,"Top 50 Words")
 
@@ -447,7 +449,6 @@ if __name__ == "__main__":
     test.week2Tests()
     print("\n" + "#"*15 + " WEEK 2 OUTPUT " + "#" * 15 + "\n")
     test.runWeek2()
-
 
     ## Uncomment these for Week 3 ##
 
