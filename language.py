@@ -17,8 +17,15 @@ Parameters: str
 Returns: 2D list of strs
 '''
 def loadBook(filename):
-    return
-
+    f = open(filename,'r')
+    Lines = f.readlines()
+    text=[]
+    for Line in Lines:
+        Line1=Line.split(" ")
+        Line1[-1] = Line1[-1].strip()
+        if Line1!=['']:
+            text.append(Line1)   
+    return text
 
 '''
 getCorpusLength(corpus)
@@ -27,7 +34,10 @@ Parameters: 2D list of strs
 Returns: int
 '''
 def getCorpusLength(corpus):
-    return
+    count=0
+    for statement in corpus:
+        count=count+len(statement)
+    return count
 
 
 '''
@@ -37,7 +47,12 @@ Parameters: 2D list of strs
 Returns: list of strs
 '''
 def buildVocabulary(corpus):
-    return
+    vocab=[]
+    for statement in corpus:
+        for word in statement:
+            if word not in vocab:
+                vocab.append(word)
+    return vocab
 
 
 '''
@@ -47,8 +62,20 @@ Parameters: 2D list of strs
 Returns: dict mapping strs to ints
 '''
 def countUnigrams(corpus):
-    return
-
+    dict={}
+    vocab=[]
+    for statement in corpus:
+        for word in statement:
+            if word not in vocab:
+                vocab.append(word) # unique words
+    for i in range(0,len(vocab)):
+                dict[vocab[i]] = 0
+    for word in vocab:
+        for statement in corpus:
+            for word1 in statement:
+                if word == word1:
+                    dict[word]=dict[word]+1
+    return dict
 
 '''
 getStartWords(corpus)
